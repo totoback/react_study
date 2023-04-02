@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemaContext } from '../contexts/ThemaContext'
 
-export default function Header({ isDark }) {
+export default function Header() {
+  const {isDark} = useContext(ThemaContext);
   return (
     <header
       className="header"
