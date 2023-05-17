@@ -4,11 +4,16 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import bgImg from "./assets/bg.png";
 import data from "./data";
 import { useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
   const [shose, setShose] = useState(data);
   return (
     <div className="App">
+      <Routes>
+        <Route path="/detail" element={<div>상세페이지임</div>}/>
+        <Route/>
+      </Routes>
       <Navbar bg="light" variant="light">
         <Container>
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
@@ -26,20 +31,19 @@ function App() {
 
       <div className="container">
         <div className="row">
-          {shose.map((el,idx)=>{
-            return(
+          {shose.map((el, idx) => {
+            return (
               <div className="col-md-4" key={idx}>
-                <img src={shose[idx].img} width="60%"/>
+                <img src={shose[idx].img} width="60%" />
                 <h4>{shose[idx].title}</h4>
                 <span>{shose[idx].price}</span>
               </div>
-            )
+            );
           })}
         </div>
       </div>
     </div>
   );
 }
-
 
 export default App;
