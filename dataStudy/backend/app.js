@@ -35,6 +35,7 @@ app.get("/api/todo", (req,res) => {
 //새로 추가하는 데이터
 app.post("/api/todo",(req,res)=>{
   const {text,done} = req.body;
+  console.log("req:body",req.body)
   todoList.push({
     id:id++,
     text,
