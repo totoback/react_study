@@ -43,3 +43,52 @@ taskA(4, 5, (a_res) => {
   });
 });
 console.log("코드 끝");
+
+
+// promise로 변경
+function taskD(a, b) {
+  return new Promise ((resolve, reject)=>{
+    setTimeout(() => {
+      const res = a + b;
+      resolve(res);
+    }, 3000);
+  })
+}
+function taskE(a) {
+  return new Promise ((resolve, reject)=>{
+    setTimeout(() => {
+      const res = a * 2;
+      resolve(res);
+    }, 2000);
+  })
+}
+function taskF(a) {
+  return new Promise ((resolve, reject)=>{
+    setTimeout(()=>{
+      const res = a * -1;
+      resolve(res)
+    })
+  },1000)
+}
+
+//promise callback식
+// taskD(5,1).then((a_res)=>{
+//   console.log("A RESULT : ", a_res),
+//   taskE(a_res).then((b_res)=>{
+//     console.log("B RESULT :", b_res),
+//     taskF(b_res).then((c_res)=>[
+//       console.log("C RESULT : ", c_res)
+//     ])
+//   })
+// })
+
+//promise
+taskD(5,1).then((a_res)=>{
+  console.log("A RESULT : ", a_res);
+  return taskE(a_res)
+}).then((b_res)=>{
+  console.log("B RESULT : ", b_res);
+  return taskF
+}).then((c_res)=>{
+  console.log("C RESULT : ", c_res)
+})
