@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-export default function DiaryEditor() {
+export default function DiaryEditor({onCreate}) {
   //react DOM : authorInput.current.으로 접근
   const authorInput = useRef() 
   const contentArea = useRef()
@@ -30,8 +30,13 @@ export default function DiaryEditor() {
       contentArea.current.focus()
       return
     }
-    console.log(state) // 변경된 state값 출력
+    onCreate(state.author, state.content, state.emotion)
     alert("저장 성공")
+    setState({
+      author:"",
+      content:"",
+      emotion:1,
+    })
   }
   return (
     <div className="DiaryEditor">
