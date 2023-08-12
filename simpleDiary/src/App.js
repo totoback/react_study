@@ -27,7 +27,9 @@ import DiaryList from "./DiaryList";
 // ];
 
 function App() {
+  //데이터
   const [data, setData] = useState([]);
+  //id 카운트
   const dataId = useRef(0);
 
   const onCreate = (author, content, emotion) => {
@@ -41,13 +43,20 @@ function App() {
     };
     dataId.current += 1;
     setData([newItem, ...data]);
+    //새로운 아이템을 먼저 정렬
   };
-
+  //삭제하기 
+  const onDelete = (targetId) =>{
+    console.log(`${targetId}가 삭제됨`)
+    const newDiaryList = data.filter((item)=> item.id !== targetId)
+    console.log(newDiaryList)
+    setData(newDiaryList)
+  }
   return (
     <div className="App">
       <header className="App-header">
         <DiaryEditor onCreate={onCreate} />
-        <DiaryList diaryList={data} />
+        <DiaryList onDelete={onDelete} diaryList={data} />
       </header>
     </div>
   );
