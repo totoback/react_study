@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-export default function DiaryEditor({onCreate}) {
+function DiaryEditor({onCreate}) {
   //react DOM : authorInput.current.으로 접근
   const authorInput = useRef() 
   const contentArea = useRef()
@@ -65,3 +65,4 @@ export default function DiaryEditor({onCreate}) {
     </div>
   );
 }
+export default React.memo(DiaryEditor);

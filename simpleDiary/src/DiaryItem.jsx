@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-export default function DiaryItem({
+function DiaryItem({
   author,
   content,
   created_date,
@@ -9,6 +9,9 @@ export default function DiaryItem({
   onRemove,
   onEdit,
 }) {
+  useEffect(()=>{
+    console.log(`${id}번째 아이템 렌더`)
+  })
   //블리언값
   const [isEdit, setIsEdit] = useState(false);
   // 수정하기 토글버튼
@@ -84,3 +87,4 @@ export default function DiaryItem({
     </div>
   );
 }
+export default React.memo(DiaryItem);
